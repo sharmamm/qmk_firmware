@@ -17,9 +17,10 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
-#define W_PREV LCTL(KC_LEFT) // Move to previous workspace on Mac OS
-#define W_NEXT LCTL(KC_RGHT) // Move to next workspace on Mac OS
-#define M_CTRL LALT(KC_UP)   // Open Mission Control on Mac OS
+#define _______ KC_TRNS
+#define W_PREV  LCTL(KC_LEFT) // Move to previous workspace on Mac OS
+#define W_NEXT  LCTL(KC_RGHT) // Move to next workspace on Mac OS
+#define M_CTRL  LALT(KC_UP)   // Open Mission Control on Mac OS
 
 /* Macros for email IDs */
 enum custom_keycodes {
@@ -65,11 +66,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [1] = LAYOUT_preonic_1x2uC( \
-  KC_GRV,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, UCMAIL,  KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL,  \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  GMAIL1,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_TRNS, KC_TRNS, \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSLS, KC_TRNS, \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS     , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RESET    \
+  KC_GRV,  _______, _______, _______, _______,  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
+  _______, _______, _______, _______, _______,  _______, _______, UCMAIL,  _______, _______, _______, KC_DEL,  \
+  _______, _______, _______, _______, _______,  GMAIL1,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
+  _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, KC_BSLS, _______, \
+  _______, _______, _______, _______, _______,      _______     , _______, _______, _______, _______, RESET    \
 ),
 
 /* Layer 1
@@ -87,12 +88,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
  
 [2] = LAYOUT_preonic_1x2uC( \
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_EQL,  \
-  KC_TRNS, KC_TRNS, KC_MPRV, KC_MPLY, KC_MNXT,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
-  KC_TRNS, KC_TRNS, KC_MUTE, KC_VOLD, KC_VOLU,  GMAIL2,  W_PREV,  KC_TRNS, M_CTRL,  W_NEXT,  KC_TRNS, KC_TRNS, \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS     , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS  \
-)
+  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,   _______, _______, _______, _______, _______, KC_EQL,  \
+  _______, _______, KC_MPRV, KC_MPLY, KC_MNXT,  _______, _______, _______, _______, _______, _______, _______, \
+  _______, _______, KC_MUTE, KC_VOLD, KC_VOLU,  GMAIL2,  W_PREV,  _______, M_CTRL,  W_NEXT,  _______, _______, \
+  _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______, \
+  _______, _______, _______, _______, _______,      _______     , _______, _______, _______, _______, _______  \
+),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
