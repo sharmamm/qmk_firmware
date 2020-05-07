@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [2] = LAYOUT_ortho_4x12(
         KC_GRV,  _______, _______, _______, _______, _______, KC_F7,   KC_F8,    KC_F9,   KC_F10,  KC_F11,  KC_F12,
-        _______, _______, _______, _______, _______, GMAIL2,  KC_LEFT, KC_UP,    KC_DOWN, KC_RGHT, _______, _______,
+        _______, _______, _______, _______, _______, GMAIL2,  KC_LEFT, KC_DOWN,  KC_UP,   KC_RGHT, _______, _______,
         _______, _______, W_PREV,  M_CTRL,  W_NEXT,  _______, RGB_TOG, RGB_RMOD, RGB_MOD, RGB_HUD, RGB_HUI, _______,
         _______, _______, _______, _______, _______, _______, _______, _______,  RGB_SAD, RGB_SAI, RGB_VAD, RGB_VAI
     ),
