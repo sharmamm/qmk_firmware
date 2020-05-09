@@ -49,19 +49,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Layer 1
      * ,-----------------------------------------------------------------------------------.
-     * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |      |      |LGUI+7|LGUI+8|LGUI+9|      |
+     * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |      |      |  &   |  *   |  (   |  )   |
      * |------+------+------+------+------+-------------+------+------+------+------+------|
-     * | LGUI |      | Prev | Play | Next |GMAIL1|      |      |LGUI+4|LGUI+5|LGUI+6|  _   |
+     * | LGUI |      | Prev | Play | Next |GMAIL1|      |      |  $   |  %   |  ^   |  _   |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
-     * |      |      | Vol- | Mute | Vol+ |      |      |      |LGUI+1|LGUI+2|LGUI+3|  +   |
+     * |      |      | Vol- | Mute | Vol+ |      |      |      |  !   |  @   |  #   |  +   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |      |      |      |      |      |      |      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [1] = LAYOUT_ortho_4x12(
-        KC_F1,   KC_F2  , KC_F3  , KC_F4,   KC_F5,   KC_F6,   _______, UCMAIL,  SUPER_7, SUPER_8, SUPER_9, _______,
-        KC_LGUI, _______, KC_MPRV, KC_MPLY, KC_MNXT, GMAIL1,  _______, _______, SUPER_4, SUPER_5, SUPER_6, KC_UNDS,
-        _______, _______, KC_VOLD, KC_MUTE, KC_VOLU, _______, _______, _______, SUPER_1, SUPER_2, SUPER_3, KC_PLUS,
+        KC_F1,   KC_F2  , KC_F3  , KC_F4,   KC_F5,   KC_F6,   _______, UCMAIL,  KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
+        KC_LGUI, _______, KC_MPRV, KC_MPLY, KC_MNXT, GMAIL1,  _______, _______, KC_DLR,  KC_PERC, KC_CIRC, KC_UNDS,
+        _______, _______, KC_VOLD, KC_MUTE, KC_VOLU, _______, _______, _______, KC_EXLM, KC_AT,   KC_HASH, KC_PLUS,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
