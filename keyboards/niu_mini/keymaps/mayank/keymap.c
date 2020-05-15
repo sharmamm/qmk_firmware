@@ -21,6 +21,7 @@
 #define SSHOT1  SGUI(KC_3)          // Screenshot entire screen on Mac OS
 #define SSHOT2  SGUI(KC_4)          // Screenshot selected area on Mac OS
 
+#define LAYER2  LT(2, KC_SPC)       // Activate layer 2 when held, space when tapped
 #define OSLAYER LT(4, KC_SPC)       // Activate layer 4 when held, space when tapped
 
 /* Macros for email IDs */
@@ -44,10 +45,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------'
      */
     [0] = LAYOUT_ortho_4x12(
-        KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,  KC_T,    KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,
-        LW_TAB,  KC_A,    KC_S,    KC_D,    KC_F,  KC_G,    KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,    KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-        KC_LCTL, KC_PGUP, KC_PGDN, KC_LALT, MO(1), OSLAYER, KC_SPC, MO(2), MO(3),   KC_LBRC, KC_RBRC, KC_QUOT
+        KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,  KC_T,    KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
+        LW_TAB,  KC_A,    KC_S,    KC_D,    KC_F,  KC_G,    KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_ENT,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,    KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+        KC_LCTL, KC_PGUP, KC_PGDN, KC_LALT, MO(1), OSLAYER, KC_SPC, LAYER2, MO(3),   KC_LBRC, KC_RBRC, KC_QUOT
     ),
 
     /* Layer 1
