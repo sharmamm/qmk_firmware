@@ -14,8 +14,10 @@
 #define SUPER_8 LGUI(KC_8)          // Super/CMD + 8
 #define SUPER_9 LGUI(KC_9)          // Super/CMD + 9
 
-#define W_PREV  LCTL(KC_LEFT)       // Move to previous workspace on Mac OS
-#define W_NEXT  LCTL(KC_RGHT)       // Move to next workspace on Mac OS
+//#define W_PREV  LCTL(KC_LEFT)       // Move to previous workspace on Mac OS
+//#define W_NEXT  LCTL(KC_RGHT)       // Move to next workspace on Mac OS
+#define W_PREV  LGUI(KC_LEFT)       // Move to previous workspace on i3
+#define W_NEXT  LGUI(KC_RIGHT)      // Move to next workspace on i3
 #define M_CTRL  LALT(KC_UP)         // Open Mission Control on Mac OS
 #define HLIGHT  LCTL(LGUI(KC_H))    // Highlight text in Preview on Mac OS
 #define SSHOT1  SGUI(KC_3)          // Screenshot entire screen on Mac OS

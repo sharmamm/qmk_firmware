@@ -4,9 +4,16 @@
 
 #define LW_TAB  LGUI_T(KC_TAB)        // Super key if held, Tab if tapped
 
-#define W_PREV  LCTL(KC_LEFT)         // Move to previous workspace on Mac OS
-#define W_NEXT  LCTL(KC_RGHT)         // Move to next workspace on Mac OS
-#define M_CTRL  LALT(KC_UP)           // Open Mission Control on Mac OS
+#define W_PREV  LGUI(KC_LEFT)         // Move to previous workspace on i3
+#define W_NEXT  LGUI(KC_RGHT)         // Move to next workspace on i3
+//#define M_CTRL  LALT(KC_UP)           // Open Mission Control on Mac OS
+
+/* Macros for email IDs */
+enum custom_keycodes {
+  UCMAIL = SAFE_RANGE,
+  GMAIL1,
+  GMAIL2
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -28,9 +35,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_TILD, _______, _______, _______, _______, _______,                            KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LGUI, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,                            _______, _______, _______, _______, _______, _______,
+     KC_LGUI, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,                            _______, UCMAIL,  _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, KC_VOLD, KC_MUTE, KC_VOLU, _______,                            W_PREV,  _______, M_CTRL,  W_NEXT,  _______, _______,
+     _______, _______, KC_VOLD, KC_MUTE, KC_VOLU, GMAIL1,                             W_PREV,  _______, _______, W_NEXT,  _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -44,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, _______,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+     _______, _______, _______, _______, _______, GMAIL2,                             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, KC_BSLS, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -66,6 +73,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 };
+
+bool process_record_user (uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case UCMAIL:
+            if (record->event.pressed) {
+                // when UCMAIL is pressed
+                SEND_STRING ("sharmamm@mail.uc.edu");
+            } else {
+                // when UCMAIL is released
+            }
+            break;
+        case GMAIL1:
+            if (record->event.pressed) {
+                // when GMAIL1 is pressed
+                SEND_STRING ("mayanksharma1806@gmail.com");
+            } else {
+                // when GMAIL1 is released
+            }
+            break;
+        case GMAIL2:
+            if (record->event.pressed) {
+                // when GMAIL2 is pressed
+                SEND_STRING ("onlyforotherapps2016@gmail.com");
+            } else {
+                // when GMAIL2 is released
+            }
+            break;
+    }
+    return true;
+}
 
 void encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
