@@ -15,8 +15,10 @@
  */
 #include QMK_KEYBOARD_H
 
-#define W_PREV LCTL(KC_LEFT) // Move to previous workspace on Mac OS
-#define W_NEXT LCTL(KC_RGHT) // Move to next workspace on Mac OS
+//#define W_PREV LCTL(KC_LEFT) // Move to previous workspace on Mac OS
+//#define W_NEXT LCTL(KC_RGHT) // Move to next workspace on Mac OS
+#define W_PREV LGUI(KC_LEFT) // Move to previous workspace on i3
+#define W_NEXT LGUI(KC_RGHT) // Move to next workspace on i3
 #define M_CTRL LALT(KC_UP)   // Open Mission Control on Mac OS
 
 /* Macros for email IDs */
