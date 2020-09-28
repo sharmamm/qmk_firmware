@@ -23,17 +23,21 @@ extern uint8_t is_master;
 #define SUPER_8 LGUI(KC_8)            // Super/CMD + 8
 #define SUPER_9 LGUI(KC_9)            // Super/CMD + 9
 
-#define W_PREV  LGUI(KC_LEFT)         // Move to previous workspace on Mac OS                                      
-#define W_NEXT  LGUI(KC_RGHT)         // Move to next workspace on Mac OS                                      
-#define M_CTRL  LALT(KC_UP)           // Open Mission Control on Mac OS
-#define HLIGHT  LCTL(LGUI(KC_H))      // Highlight text in  Preview on Mac OS
-#define SSHOT1  SGUI(KC_3)            // Screenshot entire screen on Mac OS
-#define SSHOT2  SGUI(KC_4)            // Screenshot selected area on Mac OS
+#define ALT_1 LALT(KC_1)              // Alt + 1
+#define ALT_2 LALT(KC_2)              // Alt + 2
+#define ALT_3 LALT(KC_3)              // Alt + 3
+#define ALT_4 LALT(KC_4)              // Alt + 4
+#define ALT_5 LALT(KC_5)              // Alt + 5
+#define ALT_6 LALT(KC_6)              // Alt + 6
+#define ALT_7 LALT(KC_7)              // Alt + 7
+#define ALT_8 LALT(KC_8)              // Alt + 8
+#define ALT_9 LALT(KC_9)              // Alt + 9
 
+#define ALT_X   LALT(KC_X)            // Alt + x: mainly for Emacs
+                                      //
 /* Macros for email IDs */
 enum custom_keycodes {
-  RGBRST = SAFE_RANGE,
-  UCMAIL,
+  UCMAIL = SAFE_RANGE,
   GMAIL1,
   GMAIL2
 };
@@ -47,18 +51,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                            MO(1),   MO(4),  KC_ENT,     KC_SPC,   MO(2),   MO(3)                                                  \
+                                          KC_LALT,   MO(1),  KC_ENT,     KC_SPC,   MO(2),   MO(3)                                                  \
                                       //`--------------------------'  `--------------------------'
 
   ),
 
   [1] = LAYOUT ( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                      _______,  UCMAIL, KC_LPRN, KC_RPRN, KC_UNDS, KC_PLUS,\
+      KC_TILD,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_PGUP,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_TOG, _______, KC_MPRV, KC_MPLY, KC_MNXT,  GMAIL1,                      _______, _______, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR,\
+      _______, _______, KC_MPRV, KC_MPLY, KC_MNXT,  GMAIL1,                      _______, _______, _______, _______, _______, KC_PGDN,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, KC_VOLD, KC_MUTE, KC_VOLD, _______,                      _______, _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR,\
+      _______, _______, KC_VOLD, KC_MUTE, KC_VOLD, _______,                      _______, _______,  UCMAIL, _______, _______,   RESET,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, KC_LBRC,    KC_RBRC, _______, _______                                                  \
                                       //`--------------------------'  `--------------------------'
@@ -66,6 +70,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [2] = LAYOUT ( \
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+      _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______, _______, _______, _______, _______,  GMAIL2,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______, _______,   ALT_X, _______, _______, _______,                      _______, _______, _______, _______, KC_BSLS, _______,\
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                          _______, _______, KC_LCBR,    KC_RCBR, _______, _______                                                  \
+                                      //`--------------------------'  `--------------------------'
+
+  ),
+
+  [3] = LAYOUT (                                                        \
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+      _______, SUPER_1, SUPER_2, SUPER_3, SUPER_4, SUPER_5,                      SUPER_6, SUPER_7, SUPER_8, SUPER_9, KC_MINS,  KC_EQL,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______,   ALT_1,   ALT_2,   ALT_3,   ALT_4,   ALT_5,                        ALT_6,   ALT_7,   ALT_8,   ALT_9, KC_UNDS, KC_PLUS,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                        KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,\
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                          _______, _______, _______,    _______, _______, _______                                                  \
+                                      //`--------------------------'  `--------------------------'
+
+  )
+  /*  [2] = LAYOUT ( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_TILD, _______, _______, _______, _______, _______,                        KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -102,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           _______, _______, KC_PGDN,    KC_PGUP, _______, _______                                                  \
                                       //`--------------------------'  `--------------------------'
 
-  )
+  ) */
 };
 
 int RGB_current_mode;
@@ -188,24 +217,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 
   switch (keycode) {
-    case RGB_MOD:
-      #ifdef RGBLIGHT_ENABLE
-        if (record->event.pressed) {
-          rgblight_mode(RGB_current_mode);
-          rgblight_step();
-          RGB_current_mode = rgblight_config.mode;
-        }
-      #endif
-      return false;
-    case RGBRST:
-      #ifdef RGBLIGHT_ENABLE
-        if (record->event.pressed) {
-          eeconfig_update_rgblight_default();
-          rgblight_enable();
-          RGB_current_mode = rgblight_config.mode;
-        }
-      #endif
-      break;
     case UCMAIL:
       if (record->event.pressed) {
         //when UCMAIL is pressed

@@ -3,13 +3,13 @@
 #   change to "no" to disable the options, or define them in the Makefile in
 #   the appropriate keymap folder that will get included automatically
 #
-EXTRAFLAGS += -flto -DUSE_Link_Time_Optimization
+#EXTRAFLAGS += -flto -DUSE_Link_Time_Optimization
 
 # Enable media keys
 EXTRAKEY_ENABLE = yes
 
 # Enable OLED screens
-OLED_DRIVER_ENABLE = yes
+#OLED_DRIVER_ENABLE = yes
 
 # If you want to change the display of OLED, you need to change here
 SRC +=  ./lib/glcdfont.c \
