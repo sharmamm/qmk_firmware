@@ -8,10 +8,6 @@ EXTRAFLAGS += -flto -DUSE_Link_Time_Optimization
 # Enable media keys
 EXTRAKEY_ENABLE = yes
 
-# Enable RGB underglow
-RGBLIGHT_ENABLE = yes
-#RGB_MATRIX_ENABLE = WS2812
-
 # Enable OLED screens
 OLED_DRIVER_ENABLE = yes
 

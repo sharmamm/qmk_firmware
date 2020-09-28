@@ -19,7 +19,7 @@
 
 #define LG_ESC  LGUI_T(KC_ESC)  // Super key if held, escape if tapped
 #define LS_TAB  LSFT_T(KC_TAB)  // Shift key if held, tab if tapped
-#define RS_ENT  RSFT_T(KC_ENT)  // Shift key if held, enter if tapped
+#define RS_QUOT RSFT_T(KC_QUOT) // Shift key if held, enter if tapped
 #define LAYER1  LT(1, KC_LBRC)  // Activate layer 1 if held, left bracket if tapped
 #define LAYER2  LT(2, KC_RBRC)  // Activate layer 2 if held, right bracket if tapped
 #define LAYER3  LT(3, KC_SPC)   // Activate layer 3 if held, space if tapped
@@ -56,20 +56,20 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_reviung39(
     LG_ESC,   KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSPC,
-    LS_TAB,   KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
-    KC_LCTL,  KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  RS_ENT,
+    LS_TAB,   KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_ENT,
+    KC_LCTL,  KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  RS_QUOT,
                                                        LAYER1,   LAYER3,   LAYER2
   ),
   
   [1] = LAYOUT_reviung39(
-    KC_TILD,  KC_1,     KC_2,     KC_3,     KC_4,      KC_5,               KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN,  KC_PGUP,
+    KC_TILD,  KC_1,     KC_2,     KC_3,     KC_4,      KC_5,               KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_PGUP,
     _______,  _______,  KC_MPRV,  KC_MPLY,  KC_MNXT,   GMAIL1,             _______,  _______,  _______,  _______,  _______,  KC_PGDN,
     _______,  _______,  KC_VOLD,  KC_MUTE,  KC_VOLU,   _______,            _______,  UCMAIL,   _______,  _______,  _______,  RESET,
                                                        _______,  KC_SPC,   _______
   ),
 
   [2] = LAYOUT_reviung39(
-    _______,  KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,    KC_PERC,            KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     _______,
+    _______,  KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,    KC_PERC,            KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN,  _______,
     _______,  _______,  _______,  _______,  _______,   GMAIL2,             KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  _______,  _______,
     _______,  _______,  ALT_X,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  KC_BSLS,  _______,
                                                        KC_LALT,  KC_SPC,   _______
