@@ -10,31 +10,32 @@ extern uint8_t is_master;
 
 #define _______ KC_TRNS
 
-#define LG_ESC  LGUI_T(KC_ESC)        // Super key if held, Escape if tapped
-#define LS_TAB  LSFT_T(KC_TAB)        // Shift if held, Tab if tapped
+#define LG_ESC  LGUI_T(KC_ESC)      // Super key if held, Escape if tapped
+#define LS_TAB  LSFT_T(KC_TAB)      // Shift if held, Tab if tapped
+#define RS_QUOT RSFT_T(KC_QUOT)     // Shift if held, quotation if tapped
 
-#define SUPER_1 LGUI(KC_1)            // Super/CMD + 1
-#define SUPER_2 LGUI(KC_2)            // Super/CMD + 2
-#define SUPER_3 LGUI(KC_3)            // Super/CMD + 3
-#define SUPER_4 LGUI(KC_4)            // Super/CMD + 4
-#define SUPER_5 LGUI(KC_5)            // Super/CMD + 5
-#define SUPER_6 LGUI(KC_6)            // Super/CMD + 6
-#define SUPER_7 LGUI(KC_7)            // Super/CMD + 7
-#define SUPER_8 LGUI(KC_8)            // Super/CMD + 8
-#define SUPER_9 LGUI(KC_9)            // Super/CMD + 9
+#define SUPER_1 LGUI(KC_1)          // Super/CMD + 1
+#define SUPER_2 LGUI(KC_2)          // Super/CMD + 2
+#define SUPER_3 LGUI(KC_3)          // Super/CMD + 3
+#define SUPER_4 LGUI(KC_4)          // Super/CMD + 4
+#define SUPER_5 LGUI(KC_5)          // Super/CMD + 5
+#define SUPER_6 LGUI(KC_6)          // Super/CMD + 6
+#define SUPER_7 LGUI(KC_7)          // Super/CMD + 7
+#define SUPER_8 LGUI(KC_8)          // Super/CMD + 8
+#define SUPER_9 LGUI(KC_9)          // Super/CMD + 9
 
-#define ALT_1 LALT(KC_1)              // Alt + 1
-#define ALT_2 LALT(KC_2)              // Alt + 2
-#define ALT_3 LALT(KC_3)              // Alt + 3
-#define ALT_4 LALT(KC_4)              // Alt + 4
-#define ALT_5 LALT(KC_5)              // Alt + 5
-#define ALT_6 LALT(KC_6)              // Alt + 6
-#define ALT_7 LALT(KC_7)              // Alt + 7
-#define ALT_8 LALT(KC_8)              // Alt + 8
-#define ALT_9 LALT(KC_9)              // Alt + 9
+#define ALT_1 LALT(KC_1)            // Alt + 1
+#define ALT_2 LALT(KC_2)            // Alt + 2
+#define ALT_3 LALT(KC_3)            // Alt + 3
+#define ALT_4 LALT(KC_4)            // Alt + 4
+#define ALT_5 LALT(KC_5)            // Alt + 5
+#define ALT_6 LALT(KC_6)            // Alt + 6
+#define ALT_7 LALT(KC_7)            // Alt + 7
+#define ALT_8 LALT(KC_8)            // Alt + 8
+#define ALT_9 LALT(KC_9)            // Alt + 9
 
-#define ALT_X   LALT(KC_X)            // Alt + x: mainly for Emacs
-                                      //
+#define ALT_X   LALT(KC_X)          // Alt + x: mainly for Emacs
+                                    
 /* Macros for email IDs */
 enum custom_keycodes {
   UCMAIL = SAFE_RANGE,
@@ -47,11 +48,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        LG_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       LS_TAB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,\
+       LS_TAB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_ENT, \
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,\
+      KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, RS_QUOT,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT,   MO(1),  KC_ENT,     KC_SPC,   MO(2),   MO(3)                                                  \
+                                          KC_LALT,   MO(1), _______,     KC_SPC,   MO(2),   MO(3)                                                  \
                                       //`--------------------------'  `--------------------------'
 
   ),
