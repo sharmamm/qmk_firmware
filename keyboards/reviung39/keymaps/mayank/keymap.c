@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [2] = LAYOUT_reviung39(
-    _______,  KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,    KC_PERC,            KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN,  _______,
+    KC_GRV,   KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,    KC_PERC,            KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN,  _______,
     _______,  _______,  _______,  _______,  _______,   GMAIL2,             KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  _______,  _______,
     _______,  _______,  ALT_X,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  KC_BSLS,  _______,
                                                        KC_LALT,  KC_SPC,   _______
