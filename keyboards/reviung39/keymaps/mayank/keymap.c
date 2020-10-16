@@ -45,6 +45,7 @@
 #define ALT_9   LALT(KC_9)      // Alt + 9
 
 #define ALT_X   LALT(KC_X)      // Alt + x: mainly for Emacs
+#define ALT_W   LALT(KC_W)      // Alt + w; for Firefox
 
 /* Macros for email IDs */
 enum custom_keycodes {
@@ -80,8 +81,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  ALT_1,    ALT_2,    ALT_3,    ALT_4,     ALT_5,              ALT_6,    ALT_7,    ALT_8,    ALT_9,    KC_UNDS,  KC_PLUS,
     KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,              KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,
                                                        _______,  _______,  _______
+  ),
+
+  [4] = LAYOUT_reviung39(
+    _______,  _______,  ALT_W,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  ALT_X,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  _______,
+                                                       _______,  _______,  _______
   )
 };
+
+layer_state_t layer_state_set_user(layer_state_t state){
+  return update_tri_layer_state(state, 1, 2, 4);
+}
 
 bool process_record_user (uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
