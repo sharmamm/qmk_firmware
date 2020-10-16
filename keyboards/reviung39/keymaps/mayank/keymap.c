@@ -44,6 +44,16 @@
 #define ALT_8   LALT(KC_8)      // Alt + 8
 #define ALT_9   LALT(KC_9)      // Alt + 9
 
+#define SSHIFT1 SGUI_T(KC_1)    // Super + Shift + 1
+#define SSHIFT2 SGUI_T(KC_2)    // Super + Shift + 2
+#define SSHIFT3 SGUI_T(KC_3)    // Super + Shift + 3
+#define SSHIFT4 SGUI_T(KC_4)    // Super + Shift + 4
+#define SSHIFT5 SGUI_T(KC_5)    // Super + Shift + 5
+#define SSHIFT6 SGUI_T(KC_6)    // Super + Shift + 6
+#define SSHIFT7 SGUI_T(KC_7)    // Super + Shift + 7
+#define SSHIFT8 SGUI_T(KC_8)    // Super + Shift + 8
+#define SSHIFT9 SGUI_T(KC_9)    // Super + Shift + 9
+
 #define ALT_X   LALT(KC_X)      // Alt + x: mainly for Emacs
 #define ALT_W   LALT(KC_W)      // Alt + w; for Firefox
 
@@ -72,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [2] = LAYOUT_reviung39(
     KC_GRV,   KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,    KC_PERC,            KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN,  _______,
     _______,  _______,  _______,  _______,  _______,   GMAIL2,             KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  _______,  _______,
-    _______,  _______,  ALT_X,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  KC_BSLS,  _______,
+    _______,  _______,  _______,  _______,  _______,   _______,            _______,  _______,  _______,  _______,  KC_BSLS,  _______,
                                                        KC_LALT,  KC_SPC,   _______
   ),
 
@@ -84,8 +94,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [4] = LAYOUT_reviung39(
-    _______,  _______,  ALT_W,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  _______,
     _______,  _______,  _______,  _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  _______,
+    _______,  SSHIFT1,  SSHIFT2,  SSHIFT3,  SSHIFT4,   SSHIFT5,            SSHIFT6,  SSHIFT7,  SSHIFT8,  SSHIFT9,  _______,  _______,
     _______,  _______,  ALT_X,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  _______,
                                                        _______,  _______,  _______
   )
