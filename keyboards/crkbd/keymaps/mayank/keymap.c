@@ -37,6 +37,9 @@ extern uint8_t is_master;
 #define ALT_9 LALT(KC_9)            // Alt + 9
 
 #define ALT_X   LALT(KC_X)          // Alt + x: mainly for Emacs
+
+#define ZOOMIN  RCS(KC_PGUP)       // Ctrl + Shift + PgUp
+#define ZOOMOUT RCS(KC_PGDN)       // Ctrl + Shift + PgDn
                                     
 /* Macros for email IDs */
 enum custom_keycodes {
@@ -74,9 +77,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [2] = LAYOUT ( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,\
+      _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  ZOOMIN,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______,  GMAIL2,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,\
+      _______, _______, _______, _______, _______,  GMAIL2,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, ZOOMOUT,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, _______,   ALT_X, _______, _______, _______,                      _______, _______, _______, _______, KC_BSLS, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
