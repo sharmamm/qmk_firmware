@@ -56,6 +56,9 @@
 
 #define ALT_X   LALT(KC_X)      // Alt + x: mainly for Emacs
 
+#define ZOOMIN  RCS(KC_PGUP)    // Ctrl + Shift + PgUp
+#define ZOOMOUT RCS(KC_PGDN)    // Ctrl + Shift + PgDn
+
 /* Macros for email IDs */
 enum custom_keycodes {
   UCMAIL  = SAFE_RANGE,
@@ -93,8 +96,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [4] = LAYOUT_reviung39(
-    _______,  SSHIFT1,  SSHIFT2,  SSHIFT3,  SSHIFT4,   SSHIFT5,            SSHIFT6,  SSHIFT7,  SSHIFT8,  SSHIFT9,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  _______,
+    _______,  SSHIFT1,  SSHIFT2,  SSHIFT3,  SSHIFT4,   SSHIFT5,            SSHIFT6,  SSHIFT7,  SSHIFT8,  SSHIFT9,  _______,   ZOOMIN,
+    _______,  RGB_TOG,  _______,  _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  ZOOMOUT,
     _______,  _______,  ALT_X,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  _______,
                                                        _______,  _______,  _______
   )
