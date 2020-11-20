@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [4] = LAYOUT_reviung39(
     _______,  SSHIFT1,  SSHIFT2,  SSHIFT3,  SSHIFT4,   SSHIFT5,            SSHIFT6,  SSHIFT7,  SSHIFT8,  SSHIFT9,  _______,   ZOOMIN,
-    _______,  RGB_TOG,  _______,  _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  ZOOMOUT,
+    _______,  RGB_TOG,  RGB_HUD,  RGB_HUI,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  ZOOMOUT,
     _______,  _______,  ALT_X,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  _______,
                                                        _______,  _______,  _______
   )
