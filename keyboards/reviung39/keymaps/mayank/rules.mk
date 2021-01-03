@@ -1,3 +1,3 @@
 BOOTLOADER = atmel-dfu # Elite-C
 
-RGBLIGHT_ENABLE = yes   # No RGB
+RGBLIGHT_ENABLE = no   # No RGB
