@@ -16,6 +16,7 @@ extern uint8_t is_master;
 #define RS_QUOT RSFT_T(KC_QUOT)     // Shift if held, quotation if tapped
 #define LAYER1  LT(1, KC_LBRC)      // Activate layer 1 if held, left bracket if tapped
 #define LAYER2  LT(2, KC_RBRC)      // Activate layer 2 if held, right bracket if tapped
+#define LAYER3  LT(3, KC_SPC)       // Activate layer 3 if held, space if tapped
 
 #define SUPER_1 LGUI(KC_1)          // Super/CMD + 1
 #define SUPER_2 LGUI(KC_2)          // Super/CMD + 2
@@ -68,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, RS_QUOT,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT,  LAYER1,   MO(3),     KC_SPC,  LAYER2,   MO(4)                                                  \
+                                          KC_LALT,  LAYER1,   MO(3),     LAYER3,  LAYER2,   MO(4)                                                  \
                                       //`--------------------------'  `--------------------------'
 
   ),
