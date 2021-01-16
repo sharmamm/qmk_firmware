@@ -46,6 +46,13 @@ extern uint8_t is_master;
 #define ZOOMIN  RCS(KC_PGUP)        // Ctrl + Shift + PgUp
 #define ZOOMOUT RCS(KC_PGDN)        // Ctrl + Shift + PgDn
                                     
+/* Macros for email IDs */
+enum custom_keycodes {
+  UCMAIL = SAFE_RANGE,
+  GMAIL1,
+  GMAIL2
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT ( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -64,9 +71,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_TILD,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_PGUP,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,                      _______, _______, _______, _______, _______, KC_PGDN,\
+      _______, _______, KC_MPRV, KC_MPLY, KC_MNXT,  GMAIL1,                      _______, _______, _______, _______, _______, KC_PGDN,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, KC_VOLD, KC_MUTE, KC_VOLU, _______,                      _______, _______, _______, _______, _______,   RESET,\
+      _______, _______, KC_VOLD, KC_MUTE, KC_VOLU, _______,                      _______,  UCMAIL, _______, _______, _______,   RESET,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______, _______, _______                                                  \
                                       //`--------------------------'  `--------------------------'
@@ -77,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,\
+      _______, _______, _______, _______, _______,  GMAIL2,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, _______,   ALT_X, _______, _______, _______,                      _______, _______, _______, _______, KC_BSLS, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -115,20 +122,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #ifdef OLED_DRIVER_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (is_keyboard_master()) {
-        return OLED_ROTATION_270;
-    } else {
-        return rotation;
-    }
+    //if (is_keyboard_master()) {
+    //    return OLED_ROTATION_270;
+    //} else {
+    //    return OLED_ROTATION_270;
+    //}
+    return OLED_ROTATION_270;
 }
 
 void render_crkbd_logo(void) {
     static const char PROGMEM crkbd_logo[] = {
         0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f, 0x90, 0x91, 0x92, 0x93, 0x94,
         0xa0, 0xa1, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xab, 0xac, 0xad, 0xae, 0xaf, 0xb0, 0xb1, 0xb2, 0xb3, 0xb4,
-        0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc, 0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd4,
-        0};
+        0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc, 0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd4, 0};
+    //static const char PROGMEM crkbd_logo[] = {
+    //    0x80, 0x81, 0x82, 0x83, 0x84,
+    //    0xa0, 0xa1, 0xa2, 0xa3, 0xa4,
+    //    0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0};
     oled_write_P(crkbd_logo, false);
+    //oled_write_P(PSTR("corne"), false);
 }
 
 #    define KEYLOG_LEN 5
@@ -197,6 +209,14 @@ void render_mod_status(uint8_t modifiers) {
     oled_write_P(PSTR("G"), (modifiers & MOD_MASK_GUI));
 }
 
+void render_wtf(void){
+    oled_write_P(PSTR("WHAT "), false);
+    oled_write_P(PSTR("     "), false);
+    oled_write_P(PSTR(" THE "), false);
+    oled_write_P(PSTR("     "), false);
+    oled_write_P(PSTR("FUCK?"), false);
+}
+
 void render_status_main(void) {
     /* Show Keyboard Layout  */
     render_default_layer_state();
@@ -210,14 +230,42 @@ void oled_task_user(void) {
     if (is_master) {
         render_status_main();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
     } else {
-        //render_status_main();
-        render_crkbd_logo();
+        render_status_main();
+        //render_wtf();
+        //render_crkbd_logo();
     }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
       add_keylog(keycode);
+  }
+
+  switch (keycode) {
+    case UCMAIL:
+      if (record->event.pressed) {
+        //when UCMAIL is pressed
+        SEND_STRING ("sharmamm@mail.uc.edu");
+      } else {
+        // when UCMAIL is released
+      }
+      break;
+    case GMAIL1:
+      if (record->event.pressed) {
+        //when GMAIL1 is pressed
+        SEND_STRING ("mayanksharma1806@gmail.com");
+      } else {
+        // when GMAIL1 is released
+      }
+      break;
+    case GMAIL2:
+      if (record->event.pressed) {
+        //when GMAIL2 is pressed
+        SEND_STRING ("onlyforotherapps2016@gmail.com");
+      } else {
+        // when GMAIL2 is released
+      }
+      break;
   }
   return true;
 }
