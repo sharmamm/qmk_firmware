@@ -1,4 +1,11 @@
 #include QMK_KEYBOARD_H
+#ifdef PROTOCOL_LUFA
+  #include "lufa.h"
+  #include "split_util.h"
+#endif
+#ifdef SSD1306OLED
+  #include "ssd1306.h"
+#endif
 
 extern uint8_t is_master;
 
@@ -119,111 +126,63 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
-#ifdef OLED_DRIVER_ENABLE
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (is_keyboard_master()) {
-        return OLED_ROTATION_270;
-    } else {
-        return rotation;
-    }
+//SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
+#ifdef SSD1306OLED
+
+// When add source files to SRC in rules.mk, you can use functions.
+const char *read_layer_state(void);
+const char *read_logo(void);
+void set_keylog(uint16_t keycode, keyrecord_t *record);
+const char *read_keylog(void);
+const char *read_keylogs(void);
+
+// const char *read_mode_icon(bool swap);
+// const char *read_host_led_state(void);
+// void set_timelog(void);
+// const char *read_timelog(void);
+
+void matrix_scan_user(void) {
+   iota_gfx_task();
 }
 
-void render_crkbd_logo(void) {
-    static const char PROGMEM crkbd_logo[] = {
-        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f, 0x90, 0x91, 0x92, 0x93, 0x94,
-        0xa0, 0xa1, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xab, 0xac, 0xad, 0xae, 0xaf, 0xb0, 0xb1, 0xb2, 0xb3, 0xb4,
-        0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc, 0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd4,
-        0};
-    oled_write_P(crkbd_logo, false);
+void matrix_render_user(struct CharacterMatrix *matrix) {
+  if (is_master) {
+    // If you want to change the display of OLED, you need to change here
+    matrix_write_ln(matrix, read_layer_state());
+    matrix_write_ln(matrix, read_keylog());
+    matrix_write_ln(matrix, read_keylogs());
+    //matrix_write_ln(matrix, read_mode_icon(keymap_config.swap_lalt_lgui));
+    //matrix_write_ln(matrix, read_host_led_state());
+    //matrix_write_ln(matrix, read_timelog());
+  } else {
+    matrix_write_ln(matrix, read_layer_state());
+    matrix_write_ln(matrix, read_keylog());
+    matrix_write_ln(matrix, read_keylogs());
+    //matrix_write(matrix, read_logo());
+  }
 }
 
-#    define KEYLOG_LEN 5
-char     keylog_str[KEYLOG_LEN] = {};
-uint8_t  keylogs_str_idx        = 0;
-uint16_t log_timer              = 0;
-
-const char code_to_name[60] = {
-    ' ', ' ', ' ', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
-    'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-    'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
-    'R', 'E', 'B', 'T', '_', '-', '=', '[', ']', '\\',
-    '#', ';', '\'', '`', ',', '.', '/', ' ', ' ', ' '};
-
-void add_keylog(uint16_t keycode) {
-    if ((keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) || (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX)) {
-        keycode = keycode & 0xFF;
-    }
-
-    for (uint8_t i = KEYLOG_LEN - 1; i > 0; i--) {
-        keylog_str[i] = keylog_str[i - 1];
-    }
-    if (keycode < 60) {
-        keylog_str[0] = code_to_name[keycode];
-    }
-    keylog_str[KEYLOG_LEN - 1] = 0;
-
-    log_timer = timer_read();
+void matrix_update(struct CharacterMatrix *dest, const struct CharacterMatrix *source) {
+  if (memcmp(dest->display, source->display, sizeof(dest->display))) {
+    memcpy(dest->display, source->display, sizeof(dest->display));
+    dest->dirty = true;
+  }
 }
 
-void update_log(void) {
-    if (timer_elapsed(log_timer) > 750) {
-        add_keylog(0);
-    }
+void iota_gfx_task_user(void) {
+  struct CharacterMatrix matrix;
+  matrix_clear(&matrix);
+  matrix_render_user(&matrix);
+  matrix_update(&display, &matrix);
 }
-
-void render_keylogger_status(void) {
-    oled_write_P(PSTR("KLogr"), false);
-    oled_write(keylog_str, false);
-}
-
-void render_default_layer_state(void) {
-    oled_write_P(PSTR("Lyout"), false);
-    switch (get_highest_layer(default_layer_state)) {
-        case 0:
-            oled_write_P(PSTR("Lyr 0"), false);
-            break;
-    }
-}
-
-void render_layer_state(void) {
-    oled_write_P(PSTR("LAYER"), false);
-    oled_write_P(PSTR("Lyr 1"), layer_state_is(1));
-    oled_write_P(PSTR("Lyr 2"), layer_state_is(2));
-    oled_write_P(PSTR("Lyr 3"), layer_state_is(3));
-    oled_write_P(PSTR("Lyr 4"), layer_state_is(4));
-}
-
-void render_mod_status(uint8_t modifiers) {
-    oled_write_P(PSTR("Mods:"), false);
-    oled_write_P(PSTR(" "), false);
-    oled_write_P(PSTR("S"), (modifiers & MOD_MASK_SHIFT));
-    oled_write_P(PSTR("C"), (modifiers & MOD_MASK_CTRL));
-    oled_write_P(PSTR("A"), (modifiers & MOD_MASK_ALT));
-    oled_write_P(PSTR("G"), (modifiers & MOD_MASK_GUI));
-}
-
-void render_status_main(void) {
-    /* Show Keyboard Layout  */
-    render_default_layer_state();
-    render_layer_state();
-    render_mod_status(get_mods());
-    render_keylogger_status();
-}
-
-void oled_task_user(void) {
-    update_log();
-    if (is_master) {
-        render_status_main();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
-    } else {
-        //render_status_main();
-        render_crkbd_logo();
-    }
-}
+#endif//SSD1306OLED
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
-    add_keylog(keycode);
+#ifdef SSD1306OLED
+    set_keylog(keycode, record);
+#endif
+    // set_timelog();
   }
 
   switch (keycode) {
@@ -254,4 +213,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
-#endif

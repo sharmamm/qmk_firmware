@@ -20,25 +20,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#ifdef KEYBOARD_crkbd_rev1_common
-#    undef USE_I2C
-#    define USE_SERIAL
-#endif
+//#define MASTER_LEFT
+#define EE_HANDS
 
-#define MASTER_LEFT
+#define SSD1306OLED
 
 #define USE_SERIAL_PD2
 
 #define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 200
+#define TAPPING_TERM 100
 
-#ifdef RGB_MATRIX_ENABLE
-    #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 120
-    #define RGB_MATRIX_HUE_STEP 10
-    #define RGB_MATRIX_SAT_STEP 10
-    #define RGB_MATRIX_VAL_STEP 10
-    #define RGB_MATRIX_SPD_STEP 10
-#endif
-
-#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
-#define OLED_DISABLE_TIMEOUT
+//#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+//#define OLED_DISABLE_TIMEOUT
