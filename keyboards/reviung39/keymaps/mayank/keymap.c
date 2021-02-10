@@ -33,6 +33,7 @@
 #define SUPER_7 LGUI(KC_7)      // Super/CMD + 7
 #define SUPER_8 LGUI(KC_8)      // Super/CMD + 8
 #define SUPER_9 LGUI(KC_9)      // Super/CMD + 9
+#define SUPER_0 LGUI(KC_0)      // Super/CMD + 0
 
 #define ALT_1   LALT(KC_1)      // Alt + 1
 #define ALT_2   LALT(KC_2)      // Alt + 2
@@ -53,6 +54,29 @@
 #define SSHIFT7 SGUI(KC_7)      // Super + Shift + 7
 #define SSHIFT8 SGUI(KC_8)      // Super + Shift + 8
 #define SSHIFT9 SGUI(KC_9)      // Super + Shift + 9
+#define SSHIFT0 SGUI(KC_0)      // Super + Shift + 0
+
+#define WKSPC11 LCAG(KC_1)      // Super + Control + Alt + 1
+#define WKSPC12 LCAG(KC_2)      // Super + Control + Alt + 2
+#define WKSPC13 LCAG(KC_3)      // Super + Control + Alt + 3
+#define WKSPC14 LCAG(KC_4)      // Super + Control + Alt + 4
+#define WKSPC15 LCAG(KC_5)      // Super + Control + Alt + 5
+#define WKSPC16 LCAG(KC_6)      // Super + Control + Alt + 6
+#define WKSPC17 LCAG(KC_7)      // Super + Control + Alt + 7
+#define WKSPC18 LCAG(KC_8)      // Super + Control + Alt + 8
+#define WKSPC19 LCAG(KC_9)      // Super + Control + Alt + 9
+#define WKSPC20 LCAG(KC_0)      // Super + Control + Alt + 0
+
+#define MVETO11 HYPR(KC_1)    // Super + Control + Alt + Shift + 11
+#define MVETO12 HYPR(KC_2)    // Super + Control + Alt + Shift + 12
+#define MVETO13 HYPR(KC_3)    // Super + Control + Alt + Shift + 13
+#define MVETO14 HYPR(KC_4)    // Super + Control + Alt + Shift + 14
+#define MVETO15 HYPR(KC_5)    // Super + Control + Alt + Shift + 15
+#define MVETO16 HYPR(KC_6)    // Super + Control + Alt + Shift + 16
+#define MVETO17 HYPR(KC_7)    // Super + Control + Alt + Shift + 17
+#define MVETO18 HYPR(KC_8)    // Super + Control + Alt + Shift + 18
+#define MVETO19 HYPR(KC_9)    // Super + Control + Alt + Shift + 19
+#define MVETO20 HYPR(KC_0)    // Super + Control + Alt + Shift + 20
 
 #define ALT_X   LALT(KC_X)      // Alt + x: mainly for Emacs
 
@@ -63,7 +87,9 @@
 enum custom_keycodes {
   UCMAIL  = SAFE_RANGE,
   GMAIL1,
-  GMAIL2
+  GMAIL2,
+  PASSWD,
+  NUMBER
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -82,23 +108,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [2] = LAYOUT_reviung39(
-    KC_GRV,   KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,    KC_PERC,            KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN,  _______,
-    _______,  _______,  _______,  _______,  _______,   GMAIL2,             KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,   _______,            _______,  _______,  _______,  _______,  KC_BSLS,  _______,
+    KC_GRV,   KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,    KC_PERC,            KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN,   PASSWD,
+    _______,  _______,  _______,  _______,  _______,   GMAIL2,             KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  _______,   NUMBER,
+    _______,  _______,  ALT_X,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  KC_BSLS,  _______,
                                                        KC_LALT,  KC_SPC,   _______
   ),
 
   [3] = LAYOUT_reviung39(
-    _______,  SUPER_1,  SUPER_2,  SUPER_3,  SUPER_4,   SUPER_5,            SUPER_6,  SUPER_7,  SUPER_8,  SUPER_9,  KC_MINS,  KC_EQL,
+    SUPER_0,  SUPER_1,  SUPER_2,  SUPER_3,  SUPER_4,   SUPER_5,            SUPER_6,  SUPER_7,  SUPER_8,  SUPER_9,  KC_MINS,  KC_EQL,
     _______,  ALT_1,    ALT_2,    ALT_3,    ALT_4,     ALT_5,              ALT_6,    ALT_7,    ALT_8,    ALT_9,    KC_UNDS,  KC_PLUS,
-    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,              KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,
+    _______,  WKSPC11,  WKSPC12,  WKSPC13,  WKSPC14,   WKSPC15,            WKSPC16,  WKSPC17,  WKSPC18,  WKSPC19,  WKSPC20,  _______,
                                                        _______,  _______,  _______
   ),
 
   [4] = LAYOUT_reviung39(
-    _______,  SSHIFT1,  SSHIFT2,  SSHIFT3,  SSHIFT4,   SSHIFT5,            SSHIFT6,  SSHIFT7,  SSHIFT8,  SSHIFT9,  _______,   ZOOMIN,
-    _______,  _______,  _______,  _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  ZOOMOUT,
-    _______,  _______,  ALT_X,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  _______,  _______,
+    SSHIFT0,  SSHIFT1,  SSHIFT2,  SSHIFT3,  SSHIFT4,   SSHIFT5,            SSHIFT6,  SSHIFT7,  SSHIFT8,  SSHIFT9,  _______,   ZOOMIN,
+    _______,  MVETO11,  MVETO12,  MVETO13,  MVETO14,   MVETO15,            MVETO16,  MVETO17,  MVETO18,  MVETO19,  MVETO20,  ZOOMOUT,
+    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,              KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,
                                                        _______,  _______,  _______
   )
 };
@@ -131,6 +157,22 @@ bool process_record_user (uint16_t keycode, keyrecord_t *record) {
         SEND_STRING ("onlyforotherapps2016@gmail.com");
       } else {
         //when GMAIL2 is released
+      }
+      break;
+    case PASSWD:
+      if (record->event.pressed) {
+        // when PASSWD is pressed
+        SEND_STRING ("aeem15@UC");
+      } else {
+        //when PASSWD is released
+      }
+      break;
+    case NUMBER:
+      if (record->event.pressed) {
+        // when NUMBER is pressed
+        SEND_STRING ("4088399849");
+      } else {
+        //when NUMBER is released
       }
       break;
   }
