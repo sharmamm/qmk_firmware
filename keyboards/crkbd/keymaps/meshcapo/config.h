@@ -34,7 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef RGB_MATRIX_ENABLE
     #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 120
-    #define RGB_MATRIX_HUE_STEP 10
+    #define RGB_MATRIX_HUE_STEP 8
     #define RGB_MATRIX_SAT_STEP 10
     #define RGB_MATRIX_VAL_STEP 10
     #define RGB_MATRIX_SPD_STEP 10

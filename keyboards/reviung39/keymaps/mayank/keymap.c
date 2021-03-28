@@ -102,14 +102,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   
   [1] = LAYOUT_reviung39(
     KC_TILD,  KC_1,     KC_2,     KC_3,     KC_4,      KC_5,               KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_PGUP,
-    _______,  _______,  KC_MPRV,  KC_MPLY,  KC_MNXT,   GMAIL1,             _______,  _______,  _______,  _______,  _______,  KC_PGDN,
-    _______,  _______,  KC_VOLD,  KC_MUTE,  KC_VOLU,   _______,            _______,  UCMAIL,   _______,  _______,  _______,  RESET,
+    _______,  _______,  KC_MPRV,  KC_MPLY,  KC_MNXT,   GMAIL1,             RGB_SPI,  _______,  RGB_HUI,  RGB_SAI,  RGB_VAI,  KC_PGDN,
+    _______,  _______,  KC_VOLD,  KC_MUTE,  KC_VOLU,   _______,            RGB_SPD,  UCMAIL,   RGB_HUD,  RGB_SAD,  RGB_VAD,  RESET,
                                                        _______,  KC_SPC,   _______
   ),
 
   [2] = LAYOUT_reviung39(
     KC_GRV,   KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,    KC_PERC,            KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN,   PASSWD,
-    _______,  _______,  _______,  _______,  _______,   GMAIL2,             KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  _______,   NUMBER,
+    _______,  RGB_TOG,  RGB_M_P,  RGB_M_R,  RGB_M_SW,  GMAIL2,             KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  _______,   NUMBER,
     _______,  _______,  ALT_X,    _______,  _______,   _______,            _______,  _______,  _______,  _______,  KC_BSLS,  _______,
                                                        KC_LALT,  KC_SPC,   _______
   ),
