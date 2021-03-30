@@ -125,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,   ALT_1,   ALT_2,   ALT_3,   ALT_4,   ALT_5,                        ALT_6,   ALT_7,   ALT_8,   ALT_9, KC_UNDS, KC_PLUS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, WKSPC11, WKSPC12, WKSPC13, WKSPC14, WKSPC15,                      WKSPC16, WKSPC17, WKSPC18, WKSPC19, WKSPC20, _______,\
+      _______, WKSPC11, WKSPC11, WKSPC11, WKSPC11, WKSPC15,                      WKSPC16, WKSPC17, WKSPC18, WKSPC19, WKSPC20, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______, _______, _______                                                  \
                                       //`--------------------------'  `--------------------------'
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       SSHIFT0, SSHIFT1, SSHIFT2, SSHIFT3, SSHIFT4, SSHIFT5,                      SSHIFT6, SSHIFT7, SSHIFT8, SSHIFT9, _______,  ZOOMIN,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, MVETO11, MVETO12, MVETO13, MVETO14, MVETO15,                      MVETO16, MVETO17, MVETO18, MVETO19, MVETO20, ZOOMOUT,\
+      _______, RGB_TOG, RGB_HUD, RGB_HUI, RGB_M_R,RGB_M_SW,                      RGB_M_P, _______, _______, _______, _______, ZOOMOUT,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                        KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -303,22 +303,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING ("onlyforotherapps2016@gmail.com");
       } else {
         // when GMAIL2 is released
-      }
-      break;
-    case PASSWD:
-      if (record->event.pressed) {
-        //when PASSWD is pressed
-        SEND_STRING ("aeem15@UC");
-      } else {
-        // when PASSWD is released
-      }
-      break;
-    case NUMBER:
-      if (record->event.pressed) {
-        //when NUMBER is pressed
-        SEND_STRING ("4088399849");
-      } else {
-        // when NUMBER is released
       }
       break;
   }
